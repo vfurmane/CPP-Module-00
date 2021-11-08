@@ -6,12 +6,13 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:09:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/11/08 14:54:58 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/11/08 15:16:36 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <cstdlib>
 
 void	askContactInfo(PhoneBook *phone_book)
 {
@@ -33,9 +34,26 @@ void	askContactInfo(PhoneBook *phone_book)
 	phone_book->addNewContact(info[0], info[1], info[2], info[3], info[4]);
 }
 
+int	askContactIndex(void)
+{
+	std::string	index;
+	int			ret;
+
+	std::cout << "contact index: ";
+	std::getline(std::cin, index);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return (-1);
+	}
+	ret = atoi(index.c_str());
+	return (ret);
+}
+
 int	main(void)
 {
-	PhoneBook phone_book;
+	int			index;
+	PhoneBook	phone_book;
 	std::string	command;
 
 	do {
@@ -49,7 +67,11 @@ int	main(void)
 		else if (command.compare("ADD") == 0)
 			askContactInfo(&phone_book);
 		else if (command.compare("SEARCH") == 0)
+		{
 			phone_book.displayAllContacts();
+			index = askContactIndex();
+			phone_book.displayContactStatus(index);
+		}
 	} while (command.compare("EXIT"));
 	std::cout << "Good bye!" << std::endl;
 	return (0);
