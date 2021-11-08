@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:09:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/11/04 15:29:20 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:54:58 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(void)
 	std::string	command;
 
 	do {
-		std::cout << "What is my purpose? ";
+		std::cout << "$ ";
 		std::getline(std::cin, command);
 		if (std::cin.eof())
 		{
@@ -51,6 +51,6 @@ int	main(void)
 		else if (command.compare("SEARCH") == 0)
 			phone_book.displayAllContacts();
 	} while (command.compare("EXIT"));
-	std::cout << "Oh my god..." << std::endl;
+	std::cout << "Good bye!" << std::endl;
 	return (0);
 }
