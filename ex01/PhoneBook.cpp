@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:46:13 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/11/04 15:29:08 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:56:43 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	writeTruncatedData(std::string data)
 void	PhoneBook::displayAllContacts()
 {
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	std::cout << "|     index|first name| last name|    secret|" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < this->_current_id; i++)
 	{
