@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:09:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/11/08 15:16:36 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/11/09 09:11:38 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	askContactInfo(PhoneBook *phone_book)
 
 int	askContactIndex(void)
 {
-	std::string	index;
-	int			ret;
+	std::string				index;
+	std::string::iterator	chr;
+	int						ret;
 
 	std::cout << "contact index: ";
 	std::getline(std::cin, index);
@@ -46,6 +47,10 @@ int	askContactIndex(void)
 		std::cout << std::endl;
 		return (-1);
 	}
+	chr = index.begin();
+	while (chr != index.end())
+		if (!isdigit(*chr++))
+			return (-1);
 	ret = atoi(index.c_str());
 	return (ret);
 }
@@ -70,7 +75,10 @@ int	main(void)
 		{
 			phone_book.displayAllContacts();
 			index = askContactIndex();
-			phone_book.displayContactStatus(index);
+			if (index < 0)
+				std::cout << "Index must be a positive integer." << std::endl;
+			else
+				phone_book.displayContactStatus(index);
 		}
 	} while (command.compare("EXIT"));
 	std::cout << "Good bye!" << std::endl;
