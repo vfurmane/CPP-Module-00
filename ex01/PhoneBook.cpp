@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:46:13 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/11/09 11:35:30 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/11/10 10:04:37 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	PhoneBook::addNewContact(std::string first_name, std::string last_name,
 {
 	if (this->_current_id >= 8)
 	{
-		memmove(this->_contacts, &this->_contacts[1],
-			7 * sizeof (*this->_contacts));
+		for (int i = 1; i < 8; i++)
+			this->_contacts[i - 1] = this->_contacts[i];
 		this->_current_id = 7;
 	}
 	this->_contacts[this->_current_id].updateInfo(first_name, last_name, nickname, phone_number, darkest_secret);
